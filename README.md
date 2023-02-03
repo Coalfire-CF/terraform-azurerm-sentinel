@@ -1,98 +1,88 @@
-# ACE-ToolingTemplate
+# Microsoft Sentinel
 
-Template repository for management of ACE code. This repo should be used as the framework for maintaining ACE code that is not a part of the Launchpad stack
+This configures  sentinel on the management plane log analytics workspace.
 
-## v1.0.0 - 2022-09-06
+## Dependencies
 
-### **Description**
+- Security Core
+- Management Group creation
 
-- Terraform Version:
-- Cloud(s) supported:{Government/Commercial}
-- Product Version/License:
-- FedRAMP Compliance Support: {}
-- DoD Compliance Support:{IL4/5}
-- Misc Framework Support:
-- Launchpad validated version:
+## Resource List
 
-### **Setup and usage**
+- Log Analytics Workspace Solutions: Security
 
-Describes what changes are needed to leverage this code. Likely should have several sub headings including items as
+## Code updates
 
-- process/structure for code modifications in the version of Launchpad listed above
-- modules/output/variable updates
-- removal of existing LP technology
+`tstate.tf` Update to the appropriate version and storage accounts, see sample
 
-#### **Code Location**
+```hcl
+terraform {
+  required_version = "1.3.1"
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "3.26.0"
+    }
+  }
+  backend "azurerm" {
+    resource_group_name  = "v1-prod-va-mp-core-rg"
+    storage_account_name = "v1prodvampsatfstate"
+    container_name       = "vav1tfstatecontainer"
+    var.az_environment
+    key                  = "va-mgmt-sentinel.tfstate"
+  }
+}
+```
 
-Code should be stored in terraform/app/code
+## Deployment steps
 
-#### **Code updates**
+Change directory to the `mgmt/sentinel` folder in the primary region
 
-Ensure that vars zyx are in regional/global vars
+Run `terraform init` to initialize modules and remote state.
 
-### **Issues**
+Run `terraform plan` and evaluate the plan is expected.
 
-Bug fixes and enhancements are managed, tracked, and discussed through the GitHub issues on this repository.
+Run `terraform apply` to deploy.
 
-Issues should be flagged appropriately.
+Update the `remote-data.tf` file to add the policies state key
 
-- Bug
-- Enhancement
-- Documentation
-- Code
+Rerun `terraform apply` to update all changes
 
-#### **Bugs**
+### Data Connectors
 
-Bugs are problems that exist with the technology or code that occur when expected behavior does not match implementation.
-For example, spelling mistakes on a dashboard.
+At the time of deployment there wasn't a lot of terraform support for configuring sentinel. Engineers need to manually configure the following:
 
-Use the Bug fix template to describe the issue and expected behaviors.
+- Azure Active Directory: enable Sign-in Logs and Audit Logs
+- Microsoft Defender for Cloud: Enable incidents to generate Sentinel Incidents
+- Azure Activity: Use the Azure Policy Wizard to configure all subs in the management group
+- Azure Firewall
+- Azure Key Vault
+- Azure Kubernetes Service
+- Azure SQL Databases
+- Azure Web Application Firewall
+- Network Security Groups
+- Office 365 (if applicable)
+- Security Events via Legacy Agent (if applicable)
+- Syslog (if applicable)
 
-#### **Enhancements**
+### Pricing
 
-Updates and changes to the code to support additional functionality, new features or improve engineering or operations usage of the technology.
-For example, adding a new widget to a dashboard to report on failed backups is enhancement.
+Default pricing is free for 30 days, then PAYG per gigabyte of data processed. For more information, refer to the [Azure docs](https://azure.microsoft.com/en-us/pricing/details/azure-sentinel/). For some customers this may be sufficient, for others it may be necessary to change to a dedicated pricing model. Note most pricing models have a 30 day price fix. Meaning if you enable 100/gb day the customer will be required to pay for 100gb/day for 30 days. After 30 days the customer can change the pricing model.
 
-Use the Enhancement issue template to request enhancements to the codebase. Enhancements should be improvements that are applicable to wide variety of clients and projects. One of updates for a specific project should be handled locally. If you are unsure if something qualifies for an enhancement contact the repository code owner.
+## Additional information
 
-#### **Pull Requests**
+Sentinel analytics are configured via the Azure Portal. For more information, refer to the [Azure docs](https://docs.microsoft.com/en-us/azure/sentinel/tutorial-monitor-your-data).
 
-Code updates ideally are limited in scope to address one enhancement or bug fix per PR. The associated PR should be linked to the relevant issue.
+The default data retention is configured in the Log Analytics Workspace. The retention is set to 1 year for all data. By default, this keeps data active for live queries in Sentinel for one year. It is possible to archive data with Log Analytics. This is set on a table by table basis, see [Data Retention](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/data-retention-archive?tabs=cli-1%2Ccli-2) for more information. The best way to implement this is create a powershell script to loop through the available tables and call the `azcli` command to set the table archive policy.
 
-#### **Code Owners**
+### Inputs
 
-- Primary Code owner: Douglas Francis (@douglas-f)
-- Backup Code owner: James Westbrook (@i-ate-a-vm)
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:-----:|
+|N/A|N/A|N/A|N/A|N/A|
 
-The responsibility of the code owners is to approve and Merge PR's on the repository, and generally manage and direct issue discussions.
+## Outputs
 
-### **Repository Settings**
-
-Settings that should be applied to repos
-
-#### **Branch Protection**
-
-##### **main Branch**
-
-- Require a pull request before merging
-- Require Approvals
-- Dismiss stale pull requests approvals when new commits are pushed
-- Require review from Code Owners
-
-##### **other branches**
-
-- add as needed
-
-#### **GitHub Actions**
-
-##### **Markdown Linter**
-
-- Triggered by a Pull Request on the main branch
-- Makes use of the markdown-lint.yml and the customrules.js files, and will lint the README.md file present in the project's Top Level Directory and create a comment on the Pull Request with its body as any markdown formatting errors that are found or if there are none, then it will output 'Markdown Valid' as the body of the comment
-- The only change that may need to be made is if the README.md file is not in the Top Level Directory, then the file path value must be changed in markdown-lint.yml, line 21
-
-##### **Checkov Scan**
-
-- Triggered by a Pull Request on the main branch
-- Makes use of the checkov.yml file, and will scan the Terraform code present in the directory for any security or compliance misconfigurations using graph-based scanning and will create a comment on the Pull Request with its body as the findings from the scan
-- No changes truly need to be made
+| Name | Description |
+|------|-------------|
+|N/A|N/A|
