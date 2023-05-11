@@ -1,0 +1,8 @@
+// top sources of logs over the last 30 days
+
+union *
+| where TimeGenerated > ago(30d)
+//| where _IsBillable == true
+| summarize IngestedVolume = sum(_BilledSize) by _ResourceId
+| top 50 by IngestedVolume
+| sort by IngestedVolume desc

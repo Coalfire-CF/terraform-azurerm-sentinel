@@ -1,0 +1,8 @@
+// which k8s cluster kube api 
+
+AzureDiagnostics
+| where ResourceType == "MANAGEDCLUSTERS"
+| extend Log = todynamic(log_s)
+| extend URI = tostring(Log.requestURI)
+| summarize count() by URI
+| sort by count_

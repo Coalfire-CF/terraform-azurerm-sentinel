@@ -86,3 +86,8 @@ The default data retention is configured in the Log Analytics Workspace. The ret
 | Name | Description |
 |------|-------------|
 |N/A|N/A|
+
+## Next Steps
+
+RuleAnalytics folder: Starting point for creating analytics rules in Sentinel.
+kqlQueries folder: Handful of useful KQL queries.
