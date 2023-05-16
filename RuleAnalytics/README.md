@@ -6,7 +6,7 @@ Templates for Azure Sentinel Automated Analytic Rule additions. This folder shou
 
 Some environments have different products. You may have to add Sentinel alerts for what your environment's products are. Append `Azure_Sentinel_Rule_Import.ps1` with new alerts to create.
 
-#### Code Location
+### Code Location
 
 Code should be stored in terraform/mgmt/sentinel
 
