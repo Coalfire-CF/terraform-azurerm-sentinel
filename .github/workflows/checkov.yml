@@ -51,7 +51,7 @@ jobs:
         echo "CHECKOV_OUTPUT=$RESULTS" >> $GITHUB_ENV
         echo "CHECKOV_PASSED=$PASSED" >> $GITHUB_ENV
 
-      - name: Create comments with Checkov results
+    - name: Create comments with Checkov results
       uses: actions/github-script@v5
       if: ${{ env.CHECKOV_OUTPUT != '[]' }}
       with:

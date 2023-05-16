@@ -12,7 +12,7 @@ resource "azurerm_log_analytics_solution" "sentinel" {
 }
 
 # It appears enabling this manually may not be required. Initial deployment showed this getting enabled based on the logs
-# already existing in the workspace
+# already existing in the workspace  dd
 
 # resource "azurerm_sentinel_data_connector_azure_active_directory" "sentinel-aad" {
 #   name                       = "AAD-Connector"
