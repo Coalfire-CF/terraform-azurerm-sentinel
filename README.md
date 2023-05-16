@@ -89,5 +89,6 @@ The default data retention is configured in the Log Analytics Workspace. The ret
 
 ## Next Steps
 
+Set-TableRetention.ps1: Powershell script for setting data retention on tables to FedRAMP standards.
 RuleAnalytics folder: Starting point for creating analytics rules in Sentinel.
 kqlQueries folder: Handful of useful KQL queries.
