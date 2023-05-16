@@ -1,0 +1,5 @@
+name: Use Reusable Workflow
+on: [push, pull_request]
+jobs:
+  my-job:
+    uses: Coalfire-CF/.github/workflow-templates/org-release.yml@main
