@@ -1,4 +1,4 @@
-name: Org Release
+name: Markdown Lint
 on:
     pull_request:
       paths:
