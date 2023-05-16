@@ -1,4 +1,4 @@
-name: Use Reusable Workflow
+name: Org Release
 on: [push, pull_request]
 jobs:
   my-job:
