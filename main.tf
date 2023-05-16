@@ -18,10 +18,3 @@ resource "azurerm_log_analytics_solution" "sentinel" {
 #   name                       = "AAD-Connector"
 #   log_analytics_workspace_id = data.terraform_remote_state.core.outputs.core_la_workspace_id
 # }
-
-# not needed for most clients, additional steps to configure if desired.
-
-# resource "azurerm_sentinel_data_connector_threat_intelligence" "sentinel-taxii" {
-#   name                       = "TAXII"
-#   log_analytics_workspace_id = data.terraform_remote_state.core.outputs.core_la_workspace_id
-# }
