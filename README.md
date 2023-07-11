@@ -7,10 +7,6 @@ This configures  sentinel on the management plane log analytics workspace.
 - Security Core
 - Management Group creation
 
-## Resource List
-
-- Log Analytics Workspace Solutions: Security
-
 ## Code updates
 
 `tstate.tf` Update to the appropriate version and storage accounts, see sample
@@ -75,20 +71,41 @@ Sentinel analytics are configured via the Azure Portal. For more information, re
 
 The default data retention is configured in the Log Analytics Workspace. The retention is set to 1 year for all data. By default, this keeps data active for live queries in Sentinel for one year. It is possible to archive data with Log Analytics. This is set on a table by table basis, see [Data Retention](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/data-retention-archive?tabs=cli-1%2Ccli-2) for more information. The best way to implement this is create a powershell script to loop through the available tables and call the `azcli` command to set the table archive policy.
 
-### Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
-|N/A|N/A|N/A|N/A|N/A|
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-|N/A|N/A|
-
 ## Next Steps
 
 Set-TableRetention.ps1: Powershell script for setting data retention on tables to FedRAMP standards.
 RuleAnalytics folder: Starting point for creating analytics rules in Sentinel.
 kqlQueries folder: Handful of useful KQL queries.
+
+<!-- BEGIN_TF_DOCS -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | 1.3.1 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | = 3.1.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | = 3.1.0 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [azurerm_log_analytics_solution.sentinel](https://registry.terraform.io/providers/hashicorp/azurerm/3.1.0/docs/resources/log_analytics_solution) | resource |
+
+## Inputs
+
+No inputs.
+
+## Outputs
+
+No outputs.
+<!-- END_TF_DOCS -->
