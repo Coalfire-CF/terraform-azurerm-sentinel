@@ -7,10 +7,6 @@ This configures  sentinel on the management plane log analytics workspace.
 - Security Core
 - Management Group creation
 
-## Resource List
-
-- Log Analytics Workspace Solutions: Security
-
 ## Code updates
 
 `tstate.tf` Update to the appropriate version and storage accounts, see sample
@@ -74,18 +70,6 @@ Default pricing is free for 30 days, then PAYG per gigabyte of data processed. F
 Sentinel analytics are configured via the Azure Portal. For more information, refer to the [Azure docs](https://docs.microsoft.com/en-us/azure/sentinel/tutorial-monitor-your-data).
 
 The default data retention is configured in the Log Analytics Workspace. The retention is set to 1 year for all data. By default, this keeps data active for live queries in Sentinel for one year. It is possible to archive data with Log Analytics. This is set on a table by table basis, see [Data Retention](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/data-retention-archive?tabs=cli-1%2Ccli-2) for more information. The best way to implement this is create a powershell script to loop through the available tables and call the `azcli` command to set the table archive policy.
-
-### Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
-|N/A|N/A|N/A|N/A|N/A|
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-|N/A|N/A|
 
 ## Next Steps
 
