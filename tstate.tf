@@ -11,6 +11,6 @@ terraform {
     storage_account_name = "tfstate"
     container_name       = "statecontainer"
     environment          = "usgovernment"
-    key                  = "va-mgmt-sentinel.tfstate"
+    key                  = "mgmt-sentinel.tfstate"
   }
 }

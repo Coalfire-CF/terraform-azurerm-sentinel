@@ -1,11 +1,14 @@
-# Microsoft Sentinel
+# terraform-azurerm-sentinel
 
 This configures  sentinel on the management plane log analytics workspace.
+
+## Description
+
+This module deploys sentinel and configures it with a Log Analytics Workspace. This repo also contains KQL example queries and a PowerShell script to create Sentinel Rule Analytics.
 
 ## Dependencies
 
 - Security Core
-- Management Group creation
 
 ## Code updates
 
@@ -13,19 +16,19 @@ This configures  sentinel on the management plane log analytics workspace.
 
 ```hcl
 terraform {
-  required_version = "1.3.1"
+  required_version = ">= 1.1.7"
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "3.26.0"
+      version = "~> 3.45.0"
     }
   }
   backend "azurerm" {
-    resource_group_name  = "v1-prod-va-mp-core-rg"
-    storage_account_name = "v1prodvampsatfstate"
-    container_name       = "vav1tfstatecontainer"
-    var.az_environment
-    key                  = "va-mgmt-sentinel.tfstate"
+    resource_group_name  = "core-rg"
+    storage_account_name = "tfstate"
+    container_name       = "statecontainer"
+    environment          = "usgovernment"
+    key                  = "mgmt-sentinel.tfstate"
   }
 }
 ```
