@@ -23,12 +23,12 @@ variable "regional_tags" {
   description = "Regional level tags"
 }
 
-variable "workspace_resource_id" {
+variable "log_analytics_workspace_id" {
   description = "ID of the Log Analytics Workspace diagnostic logs should be sent to"
   type        = string
 }
 
-variable "workspace_name" {
+variable "log_analytics_workspace_name" {
   description = "Name of the Log Analytics Workspace Name diagnostic logs should be sent to"
   type        = string
 }
