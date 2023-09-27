@@ -1,10 +1,17 @@
-# terraform-azurerm-sentinel
+<div align="center">
+<img src="coalfire_logo.png" width="200">
 
-This configures  sentinel on the management plane log analytics workspace.
+</div>
+
+# terraform-azurerm-sentinel
 
 ## Description
 
-This module deploys sentinel and configures it with a Log Analytics Workspace. This repo also contains KQL example queries and a PowerShell script to create Sentinel Rule Analytics.
+This module deploys Sentinel and configures it with a Log Analytics Workspace. This repo also contains a PowerShell Script to set table log retention periods and KQL example queries.
+
+This module is used in the [Coalfire-Azure-RAMPpak](https://github.com/Coalfire-CF/Coalfire-Azure-RAMPpak) FedRAMP Framework. 
+
+Learn more at [Coalfire OpenSource](https://coalfire.com/opensource).
 
 ## Dependencies
 
@@ -12,7 +19,7 @@ This module deploys sentinel and configures it with a Log Analytics Workspace. T
 
 ## Code updates
 
-`tstate.tf` Update to the appropriate version and storage accounts, see sample
+If using the [Coalfire-Azure-RAMPpak](https://github.com/Coalfire-CF/Coalfire-Azure-RAMPpak) FedRAMP Framework, update `tstate.tf` to the appropriate version and storage accounts, see sample:
 
 ```hcl
 terraform {
@@ -47,6 +54,31 @@ Update the `remote-data.tf` file to add the policies state key
 
 Rerun `terraform apply` to update all changes
 
+## Usage
+
+```hcl
+provider "azurerm" {
+  features {}
+}
+
+module "sentinel" {
+  source                    = "github.com/Coalfire-CF/terraform-azurerm-sentinel"
+
+  name                       = "${var.resource_prefix}-sentinel"
+  resource_group_name        = azurerm_resource_group.management.name
+  location                   = var.location
+  workspace_resource_id      = data.terraform_remote_state.core.outputs.core_la_workspace_id
+  workspace_name             = data.terraform_remote_state.core.outputs.core_la_workspace_name
+
+  global_tags = var.global_tags
+  regional_tags = var.regional_tags
+}
+```
+
+## Next Steps
+
+/TableRetention/Set-TableRetention.ps1: Powershell script for setting data retention on tables to FedRAMP standards.
+
 ### Data Connectors
 
 At the time of deployment there wasn't a lot of terraform support for configuring sentinel. Engineers need to manually configure the following:
@@ -68,31 +100,23 @@ At the time of deployment there wasn't a lot of terraform support for configurin
 
 Default pricing is free for 30 days, then PAYG per gigabyte of data processed. For more information, refer to the [Azure docs](https://azure.microsoft.com/en-us/pricing/details/azure-sentinel/). For some customers this may be sufficient, for others it may be necessary to change to a dedicated pricing model. Note most pricing models have a 30 day price fix. Meaning if you enable 100/gb day the customer will be required to pay for 100gb/day for 30 days. After 30 days the customer can change the pricing model.
 
-## Additional information
+### Additional information
 
 Sentinel analytics are configured via the Azure Portal. For more information, refer to the [Azure docs](https://docs.microsoft.com/en-us/azure/sentinel/tutorial-monitor-your-data).
 
 The default data retention is configured in the Log Analytics Workspace. The retention is set to 1 year for all data. By default, this keeps data active for live queries in Sentinel for one year. It is possible to archive data with Log Analytics. This is set on a table by table basis, see [Data Retention](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/data-retention-archive?tabs=cli-1%2Ccli-2) for more information. The best way to implement this is create a powershell script to loop through the available tables and call the `azcli` command to set the table archive policy.
 
-## Next Steps
-
-Set-TableRetention.ps1: Powershell script for setting data retention on tables to FedRAMP standards.
-RuleAnalytics folder: Starting point for creating analytics rules in Sentinel.
-kqlQueries folder: Handful of useful KQL queries.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | 1.3.1 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | = 3.1.0 |
+No requirements.
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | = 3.1.0 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.74.0 |
 
 ## Modules
 
@@ -102,13 +126,37 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [azurerm_log_analytics_solution.sentinel](https://registry.terraform.io/providers/hashicorp/azurerm/3.1.0/docs/resources/log_analytics_solution) | resource |
+| [azurerm_log_analytics_solution.sentinel](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_solution) | resource |
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_global_tags"></a> [global\_tags](#input\_global\_tags) | Global level tags | `map(string)` | n/a | yes |
+| <a name="input_location"></a> [location](#input\_location) | The Azure location/region to create resources in. | `string` | n/a | yes |
+| <a name="input_name"></a> [name](#input\_name) | Name of Sentinel | `string` | n/a | yes |
+| <a name="input_regional_tags"></a> [regional\_tags](#input\_regional\_tags) | Regional level tags | `map(string)` | n/a | yes |
+| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Azure Region | `string` | n/a | yes |
+| <a name="input_workspace_name"></a> [workspace\_name](#input\_workspace\_name) | Name of the Log Analytics Workspace Name diagnostic logs should be sent to | `string` | n/a | yes |
+| <a name="input_workspace_resource_id"></a> [workspace\_resource\_id](#input\_workspace\_resource\_id) | ID of the Log Analytics Workspace diagnostic logs should be sent to | `string` | n/a | yes |
 
 ## Outputs
 
 No outputs.
 <!-- END_TF_DOCS -->
+
+## Contributing
+
+[Start Here](CONTRIBUTING.md)
+
+## License
+
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/license/mit/)
+
+## Contact Us
+
+[Coalfire](https://coalfire.com/)
+
+### Copyright
+
+Copyright © 2023 Coalfire Systems Inc.
