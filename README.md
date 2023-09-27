@@ -116,7 +116,7 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.74.0 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | n/a |
 
 ## Modules
 
@@ -134,11 +134,11 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_global_tags"></a> [global\_tags](#input\_global\_tags) | Global level tags | `map(string)` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | The Azure location/region to create resources in. | `string` | n/a | yes |
+| <a name="input_log_analytics_workspace_id"></a> [log\_analytics\_workspace\_id](#input\_log\_analytics\_workspace\_id) | ID of the Log Analytics Workspace diagnostic logs should be sent to | `string` | n/a | yes |
+| <a name="input_log_analytics_workspace_name"></a> [log\_analytics\_workspace\_name](#input\_log\_analytics\_workspace\_name) | Name of the Log Analytics Workspace Name diagnostic logs should be sent to | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | Name of Sentinel | `string` | n/a | yes |
 | <a name="input_regional_tags"></a> [regional\_tags](#input\_regional\_tags) | Regional level tags | `map(string)` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Azure Region | `string` | n/a | yes |
-| <a name="input_workspace_name"></a> [workspace\_name](#input\_workspace\_name) | Name of the Log Analytics Workspace Name diagnostic logs should be sent to | `string` | n/a | yes |
-| <a name="input_workspace_resource_id"></a> [workspace\_resource\_id](#input\_workspace\_resource\_id) | ID of the Log Analytics Workspace diagnostic logs should be sent to | `string` | n/a | yes |
 
 ## Outputs
 
