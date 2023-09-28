@@ -4,7 +4,7 @@ variable "name" {
 }
 
 variable "resource_group_name" {
-  description = "Azure Region"
+  description = "Resouce Group of Sentinel"
   type        = string
 }
 
