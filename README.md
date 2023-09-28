@@ -138,7 +138,7 @@ No modules.
 | <a name="input_log_analytics_workspace_name"></a> [log\_analytics\_workspace\_name](#input\_log\_analytics\_workspace\_name) | Name of the Log Analytics Workspace Name diagnostic logs should be sent to | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | Name of Sentinel | `string` | n/a | yes |
 | <a name="input_regional_tags"></a> [regional\_tags](#input\_regional\_tags) | Regional level tags | `map(string)` | n/a | yes |
-| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Azure Region | `string` | n/a | yes |
+| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Resouce Group of Sentinel | `string` | n/a | yes |
 
 ## Outputs
 
