@@ -59,22 +59,26 @@ provider "azurerm" {
 }
 
 module "sentinel" {
-  source                    = "github.com/Coalfire-CF/terraform-azurerm-sentinel"
+  source = "github.com/Coalfire-CF/terraform-azurerm-sentinel"
 
-  name                         = "${var.resource_prefix}-sentinel"
-  resource_group_name          = azurerm_resource_group.management.name
+  name                         = "${local.resource_prefix}-sentinel"
+  resource_group_name          = data.terraform_remote_state.setup.outputs.management_rg_name
   location                     = var.location
   log_analytics_workspace_id   = data.terraform_remote_state.core.outputs.core_la_workspace_id
   log_analytics_workspace_name = data.terraform_remote_state.core.outputs.core_la_workspace_name
 
-  global_tags = var.global_tags
-  regional_tags = var.regional_tags
+  global_tags   = var.global_tags
+  regional_tags = merge({
+    Function    = "SEIM"
+    Plane       = "Management"
+    Environment = "Production"
+  }, var.regional_tags, local.global_local_tags)
 }
 ```
 
 ## Next Steps
 
-/TableRetention/Set-TableRetention.ps1: Powershell script for setting data retention on tables to FedRAMP standards.
+`/TableRetention/Set-TableRetention.ps1`: Powershell script for setting data retention on tables to FedRAMP standards.
 
 ### Data Connectors
 
