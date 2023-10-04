@@ -1,0 +1,5 @@
+// where azure diagnostics are coming from
+
+AzureDiagnostics
+| where TimeGenerated < ago(1d)
+| summarize count() by Category
