@@ -1,12 +1,19 @@
-name: Terraform Validate
+name: Org Terraform Validate
+
+permissions:
+  contents: write
+  pull-requests: write
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
-    branches:
-      - main
+    types:
+      - opened
+    paths:
+      - "**.tf"
+      - "**.tfvars"
+      - "**.hcl"
+      - ".terraform.lock.hcl"
+      - "**/terraform/**"
 
 jobs:
   verify:

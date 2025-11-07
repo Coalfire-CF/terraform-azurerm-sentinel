@@ -1,10 +1,16 @@
 name: Org Release
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
 on:
-    pull_request:
-        types:
-        - closed
-        branches:
-        - main
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
 
 jobs:
   create-release:

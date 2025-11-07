@@ -1,12 +1,26 @@
 name: Terraform fmt
 
+permissions:
+  contents: write
+  pull-requests: write
+
 on:
   push:
     branches:
-      - main
+      - "**"
+    paths:
+      - "**.tf"
+      - "**.tfvars"
+      - "**.hcl"
+      - ".terraform.lock.hcl"
   pull_request:
     branches:
-      - main
+      - "**"
+    paths:
+      - "**.tf"
+      - "**.tfvars"
+      - "**.hcl"
+      - ".terraform.lock.hcl"
 
 jobs:
   verify:
