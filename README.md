@@ -157,3 +157,33 @@ No outputs.
 ### Copyright
 
 Copyright © 2023 Coalfire Systems Inc.
+
+## Tree
+```
+.
+|-- CONTRIBUTING.md
+|-- LICENSE
+|-- License.md
+|-- README.md
+|-- TableRetention
+|   |-- Set-TableRetention.ps1
+|   |-- tableList.csv
+|-- coalfire_logo.png
+|-- kqlQueries
+|   |-- 24h-most-billable-data.kql
+|   |-- 90-day-billable-ingestion.kql
+|   |-- 90-day-resource-usage.kql
+|   |-- README.md
+|   |-- cost-of-eventid.kql
+|   |-- cost-of-table.kql
+|   |-- cost-of-workstation-logging.kql
+|   |-- devices-by-EventID.kql
+|   |-- diagnostic-sources.kql
+|   |-- eventID-by-bill.kql
+|   |-- k8s-largest-kubeapi.kql
+|   |-- top-logging-sources.kql
+|-- main.tf
+|-- release-please-config.json
+|-- update-readme-tree.sh
+|-- variables.tf
+```
