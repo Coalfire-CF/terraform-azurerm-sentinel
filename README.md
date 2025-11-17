@@ -164,7 +164,6 @@ Copyright © 2023 Coalfire Systems Inc.
 |-- CHANGELOG.md
 |-- CONTRIBUTING.md
 |-- LICENSE
-|-- License.md
 |-- README.md
 |-- TableRetention
 |   |-- Set-TableRetention.ps1
