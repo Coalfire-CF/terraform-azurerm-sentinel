@@ -184,6 +184,5 @@ Copyright © 2023 Coalfire Systems Inc.
 |   |-- top-logging-sources.kql
 |-- main.tf
 |-- release-please-config.json
-|-- update-readme-tree.sh
 |-- variables.tf
 ```
