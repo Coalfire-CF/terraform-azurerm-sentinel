@@ -11,7 +11,7 @@ module "sentinel_key" {
   rotation_expire_after       = var.rotation_expire_after
   rotation_time_before_expiry = var.rotation_time_before_expiry
 
-  tags = var.tags
+  tags = var.regional_tags
 }
 
 
