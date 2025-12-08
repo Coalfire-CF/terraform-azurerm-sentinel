@@ -73,6 +73,7 @@ module "sentinel" {
 ```
 
 ## Next Steps
+# *Must update the tableList.csv each environment can have different Table names
 
 /TableRetention/Set-TableRetention.ps1: Powershell script for setting data retention on tables to FedRAMP standards.
 
