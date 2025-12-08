@@ -12,10 +12,6 @@ module "sentinel_key" {
   rotation_time_before_expiry = var.rotation_time_before_expiry
 
   tags = var.tags
-
-  depends_on = [
-    azurerm_role_assignment.acr_kv_encryptionuser
-  ]
 }
 
 
