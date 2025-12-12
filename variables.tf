@@ -32,3 +32,11 @@ variable "log_analytics_workspace_name" {
   description = "Name of the Log Analytics Workspace Name diagnostic logs should be sent to"
   type        = string
 }
+
+## Key Vault Key Variables ##
+
+variable "customer_managed_key_enabled" {
+  description = "True/False if customer managed key is enabled for Sentinel. Only avaliable to set to TRUE for clustered log analytics workspaces."
+  type        = bool
+  default     = false
+}
