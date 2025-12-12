@@ -4,7 +4,7 @@
 
 ## Description
 
-This module deploys Sentinel and configures it with a Log Analytics Workspace. This repo also contains a PowerShell Script to set table log retention periods and KQL example queries.
+This module deploys Sentinel and configures it with a Log Analytics Workspace. Sentinel can only be connected to one Log Analytics Workspace. This repo also contains a PowerShell Script to set table log retention periods and KQL example queries.
 
 This module is used in the [Coalfire-Azure-RAMPpak](https://github.com/Coalfire-CF/Coalfire-Azure-RAMPpak) FedRAMP Framework. 
 
@@ -13,6 +13,7 @@ Learn more at [Coalfire OpenSource](https://coalfire.com/opensource).
 ## Dependencies
 
 - Security Core
+- Region Setup
 
 ## Code updates
 
@@ -87,6 +88,10 @@ At the time of deployment there wasn't a lot of terraform support for configurin
 - Azure Firewall
 - Azure Key Vault
 - Azure Kubernetes Service
+- Azure Storage Account
+- Microsoft Defender XDR (if applicable)
+- Microsoft Entra ID
+- Microsoft Entra ID Protection
 - Azure SQL Databases
 - Azure Web Application Firewall
 - Network Security Groups
