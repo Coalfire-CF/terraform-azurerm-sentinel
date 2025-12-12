@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.2.0](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/compare/v1.1.0...v1.2.0) (2025-12-12)
+
+
+### Features
+
+* sentinel upgrade ([0f725a2](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/0f725a2553d433197dc1653de4ad59e68d941e6a))
+
+
+### Miscellaneous
+
+* **deps:** bump actions/checkout from 5 to 6 ([b226691](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/b22669150df5993e9d8be1e23bf7fee5df181204))
+* **deps:** bump actions/checkout from 5 to 6 ([543980b](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/543980b6bcae7a32d6bba0f5fda7a32e6c9b6a0e))
+* remove obsolete update-readme-tree.sh script ([d60591e](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/d60591e5158d7c5d1c7bbade8f05390725c41c5d))
+* remove obsolete update-readme-tree.sh script ([f1a1bde](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/f1a1bdea87a2ed6925fb7d0db8be3be99a70262b))
+* remove old LICENSE file ([3a1416e](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/3a1416ebbb0fdedf3493d8ad9246098167d64b50))
+* remove old LICENSE file ([21b2144](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/21b21449d6656dcc093cbde1ce248ce979c7b962))
+* update README tree ([836d037](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/836d0371f6b56c0f16d5da6cddb6a913eb42f9e7))
+* update README tree ([1256365](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/1256365c3d55d7bc2e7b28d6bb56130c77a884b9))
+
 ## [1.1.0](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/compare/v1.0.0...v1.1.0) (2025-11-07)
 
 
