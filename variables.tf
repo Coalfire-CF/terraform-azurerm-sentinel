@@ -1,8 +1,3 @@
-variable "name" {
-  description = "Name of Sentinel"
-  type        = string
-}
-
 variable "resource_group_name" {
   description = "Resouce Group of Sentinel"
   type        = string

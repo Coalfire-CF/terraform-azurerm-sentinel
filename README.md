@@ -62,7 +62,6 @@ provider "azurerm" {
 module "sentinel" {
   source                    = "github.com/Coalfire-CF/terraform-azurerm-sentinel"
 
-  name                         = "${var.resource_prefix}-sentinel"
   resource_group_name          = azurerm_resource_group.management.name
   location                     = var.location
   log_analytics_workspace_id   = data.terraform_remote_state.core.outputs.core_la_workspace_id
@@ -130,7 +129,7 @@ No modules.
 | Name | Type |
 |------|------|
 | [azurerm_log_analytics_solution.sentinel](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_solution) | resource |
-| [azurerm_sentinel_log_analytics_workspace_onboarding.example](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/sentinel_log_analytics_workspace_onboarding) | resource |
+| [azurerm_sentinel_log_analytics_workspace_onboarding.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/sentinel_log_analytics_workspace_onboarding) | resource |
 
 ## Inputs
 
@@ -141,7 +140,6 @@ No modules.
 | <a name="input_location"></a> [location](#input\_location) | The Azure location/region to create resources in. | `string` | n/a | yes |
 | <a name="input_log_analytics_workspace_id"></a> [log\_analytics\_workspace\_id](#input\_log\_analytics\_workspace\_id) | ID of the Log Analytics Workspace diagnostic logs should be sent to | `string` | n/a | yes |
 | <a name="input_log_analytics_workspace_name"></a> [log\_analytics\_workspace\_name](#input\_log\_analytics\_workspace\_name) | Name of the Log Analytics Workspace Name diagnostic logs should be sent to | `string` | n/a | yes |
-| <a name="input_name"></a> [name](#input\_name) | Name of Sentinel | `string` | n/a | yes |
 | <a name="input_regional_tags"></a> [regional\_tags](#input\_regional\_tags) | Regional level tags | `map(string)` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Resouce Group of Sentinel | `string` | n/a | yes |
 
