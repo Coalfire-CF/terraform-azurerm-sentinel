@@ -36,7 +36,7 @@ variable "log_analytics_workspace_name" {
 ## Key Vault Key Variables ##
 
 variable "customer_managed_key_enabled" {
-  description = "True/False if customer managed key is enabled for Sentinel."
+  description = "True/False if customer managed key is enabled for Sentinel. Only avaliable to set to TRUE for clustered log analytics workspaces."
   type        = bool
-  default     = true
+  default     = false
 }
