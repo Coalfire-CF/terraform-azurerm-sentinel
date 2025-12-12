@@ -4,7 +4,7 @@
 
 ## Description
 
-This module deploys Sentinel and configures it with a Log Analytics Workspace. This repo also contains a PowerShell Script to set table log retention periods and KQL example queries.
+This module deploys Sentinel and configures it with a Log Analytics Workspace. Sentinel can only be connected to one Log Analytics Workspace. This repo also contains a PowerShell Script to set table log retention periods and KQL example queries.
 
 This module is used in the [Coalfire-Azure-RAMPpak](https://github.com/Coalfire-CF/Coalfire-Azure-RAMPpak) FedRAMP Framework. 
 
@@ -13,6 +13,7 @@ Learn more at [Coalfire OpenSource](https://coalfire.com/opensource).
 ## Dependencies
 
 - Security Core
+- Region Setup
 
 ## Code updates
 
@@ -73,6 +74,7 @@ module "sentinel" {
 ```
 
 ## Next Steps
+# *Must update the tableList.csv each environment can have different Table names
 
 /TableRetention/Set-TableRetention.ps1: Powershell script for setting data retention on tables to FedRAMP standards.
 
@@ -86,6 +88,10 @@ At the time of deployment there wasn't a lot of terraform support for configurin
 - Azure Firewall
 - Azure Key Vault
 - Azure Kubernetes Service
+- Azure Storage Account
+- Microsoft Defender XDR (if applicable)
+- Microsoft Entra ID
+- Microsoft Entra ID Protection
 - Azure SQL Databases
 - Azure Web Application Firewall
 - Network Security Groups
@@ -124,11 +130,13 @@ No modules.
 | Name | Type |
 |------|------|
 | [azurerm_log_analytics_solution.sentinel](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_solution) | resource |
+| [azurerm_sentinel_log_analytics_workspace_onboarding.example](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/sentinel_log_analytics_workspace_onboarding) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_customer_managed_key_enabled"></a> [customer\_managed\_key\_enabled](#input\_customer\_managed\_key\_enabled) | True/False if customer managed key is enabled for Sentinel. Only avaliable to set to TRUE for clustered log analytics workspaces. | `bool` | `false` | no |
 | <a name="input_global_tags"></a> [global\_tags](#input\_global\_tags) | Global level tags | `map(string)` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | The Azure location/region to create resources in. | `string` | n/a | yes |
 | <a name="input_log_analytics_workspace_id"></a> [log\_analytics\_workspace\_id](#input\_log\_analytics\_workspace\_id) | ID of the Log Analytics Workspace diagnostic logs should be sent to | `string` | n/a | yes |
