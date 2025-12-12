@@ -62,7 +62,6 @@ provider "azurerm" {
 module "sentinel" {
   source                    = "github.com/Coalfire-CF/terraform-azurerm-sentinel"
 
-  name                         = "${var.resource_prefix}-sentinel"
   resource_group_name          = azurerm_resource_group.management.name
   location                     = var.location
   log_analytics_workspace_id   = data.terraform_remote_state.core.outputs.core_la_workspace_id
