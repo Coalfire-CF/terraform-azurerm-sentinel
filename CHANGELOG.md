@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/compare/v1.2.1...v1.2.2) (2026-01-09)
+
+
+### Bug Fixes
+
+* update license year to 2026 ([#39](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/issues/39)) ([f901eed](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/f901eed7bb33d7317312877416d79462941054f6))
+
 ## [1.2.1](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/compare/v1.2.0...v1.2.1) (2025-12-12)
 
 
