@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.3](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/compare/v1.2.2...v1.2.3) (2026-07-24)
+
+
+### Miscellaneous
+
+* adopt Actions v0.12.1 (bypass auto-merge + event-driven re-merge) ([c1bb8c8](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/c1bb8c8b057cac13c8ca7a736119ab76a4a5f68b))
+* **ci:** adopt Coalfire-CF/Actions v0.11.3 ([#139](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/issues/139)) ([c9e0910](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/c9e09102f7bf6b1afd21b8f66e18557d40a8894b))
+* **deps:** bump the org-actions group with 7 updates ([#140](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/issues/140)) ([5f95223](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/5f95223b2cbafe851938aab6e7c2e20f28c65ea8))
+* **deps:** bump the org-actions group with 8 updates ([#141](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/issues/141)) ([1768d30](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/1768d30d7f5616840e7424baa27c351f6e364882))
+* **deps:** bump the org-actions group with 8 updates ([#142](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/issues/142)) ([2c36f1f](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/2c36f1f314992a5c7c1b6fffcf8eb571b92413c9))
+* **deps:** bump the org-actions group with 8 updates ([#143](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/issues/143)) ([1388444](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/1388444fa69c2e1e021f18d4fafc4e967558cc56))
+
 ## [1.2.2](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/compare/v1.2.1...v1.2.2) (2026-07-06)
 
 
