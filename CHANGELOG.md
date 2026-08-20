@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.2.3](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/compare/v1.2.2...v1.2.3) (2026-08-20)
+
+
+### Miscellaneous
+
+* adopt Actions v0.12.1 (bypass auto-merge + event-driven re-merge) ([c1bb8c8](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/c1bb8c8b057cac13c8ca7a736119ab76a4a5f68b))
+* **ci:** adopt Coalfire-CF/Actions v0.11.3 ([#139](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/issues/139)) ([c9e0910](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/c9e09102f7bf6b1afd21b8f66e18557d40a8894b))
+* **deps:** bump the org-actions group across 1 directory with 7 updates ([#151](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/issues/151)) ([8d71f0d](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/8d71f0d013ddc566b530daac794b2f280f0a3e9e))
+* **deps:** bump the org-actions group with 7 updates ([#140](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/issues/140)) ([5f95223](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/5f95223b2cbafe851938aab6e7c2e20f28c65ea8))
+* **deps:** bump the org-actions group with 7 updates ([#146](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/issues/146)) ([ea9435d](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/ea9435da4a9dfeb8379e07f63b6920f5f57d2023))
+* **deps:** bump the org-actions group with 8 updates ([#141](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/issues/141)) ([1768d30](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/1768d30d7f5616840e7424baa27c351f6e364882))
+* **deps:** bump the org-actions group with 8 updates ([#142](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/issues/142)) ([2c36f1f](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/2c36f1f314992a5c7c1b6fffcf8eb571b92413c9))
+* **deps:** bump the org-actions group with 8 updates ([#143](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/issues/143)) ([1388444](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/1388444fa69c2e1e021f18d4fafc4e967558cc56))
+* **docs:** generate README from _header.md and _footer.md ([#149](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/issues/149)) ([50bdcfb](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/50bdcfb7a8eca97aa9b8e32e78e1116136ed794e))
+* refresh PR template ([#148](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/issues/148)) ([9d262b9](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/9d262b97bba215e977b2b6bb582be259f75c9d9a))
+* retire org-tree-readme ([#144](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/issues/144)) ([ed78f55](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/ed78f5503dd4a77ff112e264297df459809cb350))
+
 ## [1.2.2](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/compare/v1.2.1...v1.2.2) (2026-07-06)
 
 
