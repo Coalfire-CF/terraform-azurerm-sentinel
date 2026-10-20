@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.4](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/compare/v1.2.3...v1.2.4) (2026-10-20)
+
+
+### Miscellaneous
+
+* **deps:** bump the org-actions group with 7 updates ([#157](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/issues/157)) ([bb4b7a9](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/bb4b7a9baa370e53c441a05dd46b5e5d158e5e9b))
+
 ## [1.2.3](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/compare/v1.2.2...v1.2.3) (2026-10-20)
 
 
