@@ -14,69 +14,29 @@ Learn more at [Coalfire OpenSource](https://coalfire.com/opensource).
 
 ## Dependencies
 
-- Security Core
-- Region Setup
-
-## Code updates
-
-If using the [Coalfire-Azure-RAMPpak](https://github.com/Coalfire-CF/Coalfire-Azure-RAMPpak) FedRAMP Framework, update `tstate.tf` to the appropriate version and storage accounts, see sample:
-
-```hcl
-terraform {
-  required_version = ">= 1.1.7"
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 3.45.0"
-    }
-  }
-  backend "azurerm" {
-    resource_group_name  = "core-rg"
-    storage_account_name = "tfstate"
-    container_name       = "statecontainer"
-    environment          = "usgovernment"
-    key                  = "mgmt-sentinel.tfstate"
-  }
-}
-```
-
-## Deployment steps
-
-Change directory to the `mgmt/sentinel` folder in the primary region
-
-Run `terraform init` to initialize modules and remote state.
-
-Run `terraform plan` and evaluate the plan is expected.
-
-Run `terraform apply` to deploy.
-
-Update the `remote-data.tf` file to add the policies state key
-
-Rerun `terraform apply` to update all changes
+- An existing Log Analytics workspace. This module does not create it.
+- The `Microsoft.OperationalInsights`, `Microsoft.OperationsManagement` and `Microsoft.SecurityInsights` resource providers registered in the subscription.
 
 ## Usage
 
+The module has no provider block. The caller configures `azurerm` for Azure Government. See [examples/default](examples/default) for a complete root.
+
 ```hcl
-provider "azurerm" {
-  features {}
-}
-
 module "sentinel" {
-  source                    = "github.com/Coalfire-CF/terraform-azurerm-sentinel"
+  source = "git::https://github.com/Coalfire-CF/terraform-azurerm-sentinel?ref=v2.0.0"
 
-  resource_group_name          = azurerm_resource_group.management.name
-  location                     = var.location
-  log_analytics_workspace_id   = data.terraform_remote_state.core.outputs.core_la_workspace_id
-  log_analytics_workspace_name = data.terraform_remote_state.core.outputs.core_la_workspace_name
+  resource_group_name          = "example-rg"
+  location                     = "usgovvirginia"
+  log_analytics_workspace_id   = azurerm_log_analytics_workspace.this.id
+  log_analytics_workspace_name = azurerm_log_analytics_workspace.this.name
 
-  global_tags = var.global_tags
-  regional_tags = var.regional_tags
+  tags = var.tags
 }
 ```
 
 ## Next Steps
 
-# *Must update the tableList.csv each environment can have different Table names
+Update `TableRetention/tableList.csv` for each environment. Table names differ between environments.
 
 /TableRetention/Set-TableRetention.ps1: Powershell script for setting data retention on tables to FedRAMP standards.
 
@@ -114,13 +74,16 @@ The default data retention is configured in the Log Analytics Workspace. The ret
 <!-- markdownlint-disable MD033 MD034 MD060 -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.16.6, < 2.0 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 5.10 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | n/a |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 5.10 |
 
 ## Modules
 
@@ -137,17 +100,19 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_customer_managed_key_enabled"></a> [customer\_managed\_key\_enabled](#input\_customer\_managed\_key\_enabled) | True/False if customer managed key is enabled for Sentinel. Only avaliable to set to TRUE for clustered log analytics workspaces. | `bool` | `false` | no |
-| <a name="input_global_tags"></a> [global\_tags](#input\_global\_tags) | Global level tags | `map(string)` | n/a | yes |
+| <a name="input_customer_managed_key_enabled"></a> [customer\_managed\_key\_enabled](#input\_customer\_managed\_key\_enabled) | Set to true to onboard Sentinel with a customer-managed key. Only available for workspaces linked to a dedicated Log Analytics cluster that already has a customer-managed key. | `bool` | `false` | no |
 | <a name="input_location"></a> [location](#input\_location) | The Azure location/region to create resources in. | `string` | n/a | yes |
-| <a name="input_log_analytics_workspace_id"></a> [log\_analytics\_workspace\_id](#input\_log\_analytics\_workspace\_id) | ID of the Log Analytics Workspace diagnostic logs should be sent to | `string` | n/a | yes |
-| <a name="input_log_analytics_workspace_name"></a> [log\_analytics\_workspace\_name](#input\_log\_analytics\_workspace\_name) | Name of the Log Analytics Workspace Name diagnostic logs should be sent to | `string` | n/a | yes |
-| <a name="input_regional_tags"></a> [regional\_tags](#input\_regional\_tags) | Regional level tags | `map(string)` | n/a | yes |
-| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Resouce Group of Sentinel | `string` | n/a | yes |
+| <a name="input_log_analytics_workspace_id"></a> [log\_analytics\_workspace\_id](#input\_log\_analytics\_workspace\_id) | Resource ID of the Log Analytics workspace to onboard to Microsoft Sentinel. | `string` | n/a | yes |
+| <a name="input_log_analytics_workspace_name"></a> [log\_analytics\_workspace\_name](#input\_log\_analytics\_workspace\_name) | Name of the Log Analytics workspace to onboard to Microsoft Sentinel. Must match log\_analytics\_workspace\_id. | `string` | n/a | yes |
+| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Name of the resource group for the SecurityInsights solution. Use the Log Analytics workspace's resource group. | `string` | n/a | yes |
+| <a name="input_tags"></a> [tags](#input\_tags) | Tags to apply to the SecurityInsights solution. | `map(string)` | `{}` | no |
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_sentinel_onboarding_id"></a> [sentinel\_onboarding\_id](#output\_sentinel\_onboarding\_id) | Resource ID of the Sentinel onboarding state for the workspace. |
+| <a name="output_sentinel_solution_id"></a> [sentinel\_solution\_id](#output\_sentinel\_solution\_id) | Resource ID of the SecurityInsights solution. |
 <!-- markdownlint-enable MD033 MD034 MD060 -->
 
 

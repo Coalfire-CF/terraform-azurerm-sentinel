@@ -12,69 +12,29 @@ Learn more at [Coalfire OpenSource](https://coalfire.com/opensource).
 
 ## Dependencies
 
-- Security Core
-- Region Setup
-
-## Code updates
-
-If using the [Coalfire-Azure-RAMPpak](https://github.com/Coalfire-CF/Coalfire-Azure-RAMPpak) FedRAMP Framework, update `tstate.tf` to the appropriate version and storage accounts, see sample:
-
-```hcl
-terraform {
-  required_version = ">= 1.1.7"
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 3.45.0"
-    }
-  }
-  backend "azurerm" {
-    resource_group_name  = "core-rg"
-    storage_account_name = "tfstate"
-    container_name       = "statecontainer"
-    environment          = "usgovernment"
-    key                  = "mgmt-sentinel.tfstate"
-  }
-}
-```
-
-## Deployment steps
-
-Change directory to the `mgmt/sentinel` folder in the primary region
-
-Run `terraform init` to initialize modules and remote state.
-
-Run `terraform plan` and evaluate the plan is expected.
-
-Run `terraform apply` to deploy.
-
-Update the `remote-data.tf` file to add the policies state key
-
-Rerun `terraform apply` to update all changes
+- An existing Log Analytics workspace. This module does not create it.
+- The `Microsoft.OperationalInsights`, `Microsoft.OperationsManagement` and `Microsoft.SecurityInsights` resource providers registered in the subscription.
 
 ## Usage
 
+The module has no provider block. The caller configures `azurerm` for Azure Government. See [examples/default](examples/default) for a complete root.
+
 ```hcl
-provider "azurerm" {
-  features {}
-}
-
 module "sentinel" {
-  source                    = "github.com/Coalfire-CF/terraform-azurerm-sentinel"
+  source = "git::https://github.com/Coalfire-CF/terraform-azurerm-sentinel?ref=v2.0.0"
 
-  resource_group_name          = azurerm_resource_group.management.name
-  location                     = var.location
-  log_analytics_workspace_id   = data.terraform_remote_state.core.outputs.core_la_workspace_id
-  log_analytics_workspace_name = data.terraform_remote_state.core.outputs.core_la_workspace_name
+  resource_group_name          = "example-rg"
+  location                     = "usgovvirginia"
+  log_analytics_workspace_id   = azurerm_log_analytics_workspace.this.id
+  log_analytics_workspace_name = azurerm_log_analytics_workspace.this.name
 
-  global_tags = var.global_tags
-  regional_tags = var.regional_tags
+  tags = var.tags
 }
 ```
 
 ## Next Steps
 
-# *Must update the tableList.csv each environment can have different Table names
+Update `TableRetention/tableList.csv` for each environment. Table names differ between environments.
 
 /TableRetention/Set-TableRetention.ps1: Powershell script for setting data retention on tables to FedRAMP standards.
 

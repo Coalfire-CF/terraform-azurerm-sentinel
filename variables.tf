@@ -1,5 +1,5 @@
 variable "resource_group_name" {
-  description = "Resouce Group of Sentinel"
+  description = "Name of the resource group for the SecurityInsights solution. Use the Log Analytics workspace's resource group."
   type        = string
 }
 
@@ -8,30 +8,24 @@ variable "location" {
   type        = string
 }
 
-variable "global_tags" {
+variable "tags" {
+  description = "Tags to apply to the SecurityInsights solution."
   type        = map(string)
-  description = "Global level tags"
-}
-
-variable "regional_tags" {
-  type        = map(string)
-  description = "Regional level tags"
+  default     = {}
 }
 
 variable "log_analytics_workspace_id" {
-  description = "ID of the Log Analytics Workspace diagnostic logs should be sent to"
+  description = "Resource ID of the Log Analytics workspace to onboard to Microsoft Sentinel."
   type        = string
 }
 
 variable "log_analytics_workspace_name" {
-  description = "Name of the Log Analytics Workspace Name diagnostic logs should be sent to"
+  description = "Name of the Log Analytics workspace to onboard to Microsoft Sentinel. Must match log_analytics_workspace_id."
   type        = string
 }
 
-## Key Vault Key Variables ##
-
 variable "customer_managed_key_enabled" {
-  description = "True/False if customer managed key is enabled for Sentinel. Only avaliable to set to TRUE for clustered log analytics workspaces."
+  description = "Set to true to onboard Sentinel with a customer-managed key. Only available for workspaces linked to a dedicated Log Analytics cluster that already has a customer-managed key."
   type        = bool
   default     = false
 }
