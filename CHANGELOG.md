@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/compare/v1.2.4...v2.0.0) (2026-10-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* global_tags and regional_tags are removed; pass tags instead. Terraform 1.16.6 and azurerm 5.10 are now required.
+
+### Features
+
+* require Terraform 1.16.6 and azurerm 5.10 ([#159](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/issues/159)) ([a0e473b](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/a0e473b0b58f8b2764f20773f2b9eb2db1faaf5a))
+
 ## [1.2.4](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/compare/v1.2.3...v1.2.4) (2026-10-20)
 
 
