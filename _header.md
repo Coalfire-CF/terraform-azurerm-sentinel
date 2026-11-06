@@ -9,7 +9,7 @@ Analytics Workspace. This repo also contains a PowerShell Script to set table lo
 queries.
 
 This module is used in the [Coalfire-Azure-RAMPpak](https://github.com/Coalfire-CF/Coalfire-Azure-RAMPpak) FedRAMP
-Framework. 
+Framework.
 
 Learn more at [Coalfire OpenSource](https://coalfire.com/opensource).
 
