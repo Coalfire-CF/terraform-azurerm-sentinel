@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/compare/v2.0.0...v2.0.1) (2026-11-06)
+
+
+### Documentation
+
+* wrap Markdown lines at 120 characters (Coalfire-CF/Actions[#375](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/issues/375)) ([#162](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/issues/162)) ([40872d4](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/commit/40872d4ac7c8055c0dfc22a06990a96549980f9f))
+
 ## [2.0.0](https://github.com/Coalfire-CF/terraform-azurerm-sentinel/compare/v1.2.4...v2.0.0) (2026-10-21)
 
 
